@@ -1,0 +1,15 @@
+type: disclaimer_popup
+name: Disclaimer
+description: 'Use <em>Disclaimer</em> to show a modal window for user to enter the node.'
+help: ''
+new_revision: false
+display_submitted: true
+preview_mode: 1
+status: true
+langcode: en
+dependencies:
+  module:
+    - disclaimer
+  enforced:
+    module:
+      - disclaimer

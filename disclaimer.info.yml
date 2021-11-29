@@ -1,0 +1,10 @@
+name: 'Disclaimer'
+description: 'Creates Disclaimer node and lets add the poup to every Content Type'
+package: 'Custom'
+type: module
+core: 8.x
+# core_version_requirement: ^8 || ^9
+
+dependencies:
+  - field
+#   - entity_reference

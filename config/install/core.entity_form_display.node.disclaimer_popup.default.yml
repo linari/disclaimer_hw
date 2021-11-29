@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.field.node.disclaimer_popup.body
+        - node.type.disclaimer_popup
+    module:
+        - text
+        - user
+id: node.disclaimer_popup.default
+targetEntityType: node
+bundle: disclaimer_popup
+mode: default
+content:
+    body:
+        label: hidden
+        type: text_textarea_with_summary
+        weight: 101
+        settings: {  }
+        third_party_settings: {  }
+    links:
+        weight: 100
+hidden: {  }
