@@ -31,10 +31,9 @@ class DisclaimerItem extends FieldItemBase {
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
     return [
       'columns' => [
-        'value' => [
+        'target_id' => [
           'description' => 'Disclaimer node id',
           'type' => 'int',
-          // 'size' => 'tiny',
           'not null' => FALSE,
         ],
       ],
@@ -46,7 +45,7 @@ class DisclaimerItem extends FieldItemBase {
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties = [];
-    $properties['value'] = DataDefinition::create('entity_reference')
+    $properties['target_id'] = DataDefinition::create('entity_reference')
       ->setLabel(t('Disclaimer node ID'))
       ->setDescription(t('The ID of the referenced Disclaimer node'));
 
@@ -57,7 +56,8 @@ class DisclaimerItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public function isEmpty() {
-    $value = $this->get('value')->getValue();
+    $value = $this->get('target_id')->getValue();
+    dpm($value);
     return $value === NULL || $value === '';
   }
 }

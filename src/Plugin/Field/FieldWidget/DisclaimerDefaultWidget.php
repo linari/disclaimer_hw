@@ -29,7 +29,7 @@ class DisclaimerDefaultWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
 
     $value = isset($items[$delta]->target_id) ? $items[$delta]->target_id : NULL;
-
+// dpm($items[$delta]->value);
     $element += [
           '#type' => 'entity_autocomplete',
           '#title' => t('Select Disclaimer'),

@@ -46,7 +46,7 @@ class DisclaimerDefaultFormatter extends FormatterBase {
       // );
       // dpm($item);
       // $element = [];
-      $element[$delta] = ['#markup' => $item->value];
+      $element[$delta] = ['#markup' => $item->target_id];
     }
 
     return $element;
