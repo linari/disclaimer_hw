@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - disclaimer
+id: node.disclaimer_popup
+label: Disclaimer Popup
+targetEntityType: node
+cache: true

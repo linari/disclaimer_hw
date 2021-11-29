@@ -9,7 +9,7 @@ namespace Drupal\disclaimer\Plugin\Field\FieldType;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\TypedData\DataDefinition;
 use Drupal\Core\Field\FieldItemBase;
-// use Drupal\Core\Field\BaseFieldDefinition;
+// use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
 
 /**
  * Plugin implementation of the field type.
@@ -45,7 +45,8 @@ class DisclaimerItem extends FieldItemBase {
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties = [];
-    $properties['target_id'] = DataDefinition::create('entity_reference')
+    //tried the 'entity_reference' type too - probably one of these two would work :)
+    $properties['target_id'] = DataDefinition::create('integer')
       ->setLabel(t('Disclaimer node ID'))
       ->setDescription(t('The ID of the referenced Disclaimer node'));
 
@@ -57,7 +58,6 @@ class DisclaimerItem extends FieldItemBase {
    */
   public function isEmpty() {
     $value = $this->get('target_id')->getValue();
-    dpm($value);
     return $value === NULL || $value === '';
   }
 }

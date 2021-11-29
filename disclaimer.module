@@ -1,0 +1,29 @@
+<?php
+/**
+ * Implements hook_help().
+ */
+function disclaimer_help($path, $arg) {
+  switch ($path) {
+    case "help.page.disclaimer":
+      $content = "<h2>Disclaimer popup instructions</h2>
+      <p>Disclaimer popup visibility:</p>
+      <ul>
+      <li>Go to the <strong>Content Type</strong> where Disclaimer popup must be visible <strong>Manage fields</strong> settings</li>
+      <li>Add <strong>Disclaimer field (field_disclaimer)</strong> that is already in existing fields list (make sure only Disclaimer nodes are referenced.)<br><em>By default Disclaimer field is already placed to <strong>Article</strong> Content Type</em></li>
+      <li>Make sure the field is visible in Content type form (Manage form display)</li>
+      <li>Go to <strong>Manage display</strong> and set Disclaimer field Display settings to <strong>Rendered content -> Disclaimer Popup</strong>.<br><em>This will make Disclaimer node to work as a popup before the content is visible</em></li><li>Then <strong>create Disclaimer node</strong> content and include that node to the one you need using Disclaimer field</li>
+      </ul>";
+      return $content; 
+      break; 
+  }
+}
+/**
+ * Implements hook_theme().
+ */
+function disclaimer_theme() {
+  return [
+    'node__disclaimer_popup' => [
+      'base hook' => 'node',
+    ],
+  ];
+}

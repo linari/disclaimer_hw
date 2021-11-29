@@ -1,0 +1,64 @@
+{#
+/**
+ * @file
+ * Theme override to display a Disclaimer node.
+ *
+ * @see template_preprocess_node()
+ *
+ */
+#}
+{% if view_mode == 'disclaimer_popup' %}
+  {{ attach_library('disclaimer/disclaimer-popup') }}
+  <div id="disclaimer" data-nid={{ node.id }} class="disclaimer">
+    <div class="disclaimer__wrapper">
+      <div class="disclaimer__top-header">{{ 'Important information'|t }}</div>
+      <div class="disclaimer__inside-wrapper">
+        <div class="disclaimer__text-block">
+          <div class="disclaimer__title">{{ label }}</div>
+          <div class="disclaimer__body">{{ content.body }}</div>
+        </div>
+        <div class="disclaimer__buttons">
+          <div class="disclaimer__buttons-btn disclaimer__buttons-accept">{{ 'Accept'|t }}</div>
+          <a href="/" class="disclaimer__buttons-btn disclaimer__buttons-decline">{{ 'Decline'|t }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+  {%
+    set classes = [
+      'node',
+      'node--type-' ~ node.bundle|clean_class,
+      node.isPromoted() ? 'node--promoted',
+      node.isSticky() ? 'node--sticky',
+      not node.isPublished() ? 'node--unpublished',
+      view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    ]
+  %}
+  {{ attach_library('classy/node') }}
+  <article{{ attributes.addClass(classes) }}>
+
+    {{ title_prefix }}
+    {% if label and not page %}
+      <h2{{ title_attributes }}>
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      </h2>
+    {% endif %}
+    {{ title_suffix }}
+
+    {% if display_submitted %}
+      <footer class="node__meta">
+        {{ author_picture }}
+        <div{{ author_attributes.addClass('node__submitted') }}>
+          {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+          {{ metadata }}
+        </div>
+      </footer>
+    {% endif %}
+
+    <div{{ content_attributes.addClass('node__content') }}>
+      {{ content }}
+    </div>
+
+  </article>
+{% endif %}

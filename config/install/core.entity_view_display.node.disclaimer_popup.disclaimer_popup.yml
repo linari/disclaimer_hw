@@ -2,22 +2,30 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.disclaimer_popup
     - field.field.node.disclaimer_popup.body
     - node.type.disclaimer_popup
   module:
     - text
     - user
-id: node.disclaimer_popup.default
+  enforced:
+    module:
+      - disclaimer
+_core:
+  default_config_hash: F5nLyS-pm7eofmUxaiI7Puz3cmzG9jqWcT_gKifMGg0
+id: node.disclaimer_popup.disclaimer_popup
 targetEntityType: node
 bundle: disclaimer_popup
-mode: default
+mode: disclaimer_popup
 content:
   body:
     label: hidden
-    type: text_textarea_with_summary
+    type: text_default
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
+    region: content
 hidden: {  }

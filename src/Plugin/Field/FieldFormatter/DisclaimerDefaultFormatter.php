@@ -9,7 +9,7 @@ namespace Drupal\disclaimer\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
-// use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Plugin implementation of the 'disclaimer_formatter' formatter.
@@ -38,14 +38,6 @@ class DisclaimerDefaultFormatter extends FormatterBase {
     $element = [];
 
     foreach ($items as $delta => $item) {
-      // dpm($item->get('target_id'));
-      // Render output using disclaimer_formatter theme.
-      // $source = array(
-      //   '#theme' => 'disclaimer_formatter',
-      //   '#disclaimer_node' => $item->disclaimer_node,
-      // );
-      // dpm($item);
-      // $element = [];
       $element[$delta] = ['#markup' => $item->target_id];
     }
 

@@ -1,0 +1,10 @@
+disclaimer-popup:
+  version: 1.x
+  css:
+    theme:
+      css/disclaimer-popup.css: {}
+  js:
+    js/disclaimer-popup.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.cookie
